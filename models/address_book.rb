@@ -21,4 +21,5 @@ class AddressBook
 	def remove_entry(entry)
 		entries.shift(entry)
 	end
+
 end
