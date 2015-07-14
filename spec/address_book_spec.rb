@@ -43,7 +43,6 @@ RSpec.describe AddressBook do
          
          book = AddressBook.new
          book.add_entry('Ava Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-         new_entry = book.entries[0]
 
          expect(book.remove_entry(0)).to eq []
 
