@@ -18,6 +18,5 @@ class AddressBook
 
   def remove_entry(name)
       @entries.delete_if {|entry| entry.name == name}
-      return nil
   end
 end
