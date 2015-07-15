@@ -20,7 +20,7 @@ class AddressBook
 
 	def remove_entry(entry_to_remove)
 	
-		new_arr = []
+	new_arr = []
 		
 		@entries.each do |entry|
 			new_arr << entry.name
@@ -30,7 +30,7 @@ class AddressBook
 					@entries.delete_at(i)
 			else
 				new_arr
-			end	
+			end		
 		end	
 	end
 end
