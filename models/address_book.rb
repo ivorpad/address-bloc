@@ -18,8 +18,20 @@ class AddressBook
 		@entries.insert(index, Entry.new(name, phone, email))
 	end
 
-	def remove_entry(entry)
-		entries.shift(entry)
+	def remove_entry(entry_to_remove)
+	
+		new_arr = []
+		
+		@entries.each do |entry|
+			new_arr << entry.name
+			
+			if new_arr.include?(entry_to_remove)
+					i = new_arr.index(entry_to_remove)
+					@entries.delete_at(i)
+			else
+				new_arr
+			end	
+		end	
 	end
-
 end
+
