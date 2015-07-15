@@ -5,6 +5,9 @@ class AddressBook
 
   def initialize
     @entries = []
+    add_entry('Ava Lovelace 1', '010.012.1815', 'augusta.king@lovelace.com')
+    add_entry('Ava Lovelace 2', '010.012.1815', 'augusta.king@lovelace.com')
+    add_entry('Ava Lovelace 3', '010.012.1815', 'augusta.king@lovelace.com')
   end
 
   def add_entry(name, phone, email)
@@ -19,4 +22,20 @@ class AddressBook
   def remove_entry(name)
       @entries.delete_if {|entry| entry.name == name}
   end
+
+
+
+  def retrieve_entry_number(number) 
+
+    selected = nil
+
+    @entries.each_with_index do |entry, index|
+      if index + 1 == number.to_i
+        selected = entry
+      end
+
+    end     
+    selected
+  end
+
 end

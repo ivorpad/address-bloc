@@ -12,7 +12,8 @@ class MenuController
     puts '2 - Create an entry'
     puts '3 - Search for an entry'
     puts '4 - Import entries from a CSV'
-    puts '5 - Exit'
+    puts '5 - View Entry Number'
+    puts '6 - Exit'
     print 'Enter your selection: '
 
     selection = gets.to_i
@@ -35,6 +36,10 @@ class MenuController
       read_csv
       main_menu
     when 5
+      system "clear"
+      view_entry
+      main_menu
+    when 6
       puts 'Good-bye'
 
       exit(0)
@@ -76,10 +81,27 @@ class MenuController
     end
 
   def search_entries
-    end
+  end
 
   def read_csv
+  end
+
+  def view_entry
+    system "clear"
+    puts 'Select an entry number: '
+    number = gets.chomp
+
+    entry =  @address_book.retrieve_entry_number(number)
+
+    if entry
+      puts "Name: #{entry.name}"# se puede crear y llamar a una funcion display_entry..
+    else
+      puts "Not found"
+      view_entry
     end
+
+
+  end
 
   def entry_submenu(entry)
     puts 'n - next entry'
