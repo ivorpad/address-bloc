@@ -1,6 +1,9 @@
 require_relative '../models/address_book.rb'
 
 RSpec.describe AddressBook do
+
+  let(:book) { AddressBook.new }
+
   context 'attributes' do
     it 'should respond to entries' do
       book = AddressBook.new
@@ -34,6 +37,16 @@ RSpec.describe AddressBook do
       expect(new_entry.name).to eq 'Ava Lovelace'
       expect(new_entry.phone_number).to eq '010.012.1815'
       expect(new_entry.email).to eq 'augusta.king@lovelace.com'
+    end
+  end
+
+  context ".import_from_csv" do
+    it "imports the correct number of entries" do
+      
+      book.import_from_csv("entries.csv")
+      book_size = book.entries.size
+
+      expect(book_size).to eql 5
     end
   end
 

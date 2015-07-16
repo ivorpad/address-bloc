@@ -1,13 +1,11 @@
 require_relative '../models/entry.rb'
+require "csv"
 
 class AddressBook
   attr_accessor :entries
 
   def initialize
     @entries = []
-    add_entry('Ava Lovelace 1', '010.012.1815', 'augusta.king@lovelace.com')
-    add_entry('Ava Lovelace 2', '010.012.1815', 'augusta.king@lovelace.com')
-    add_entry('Ava Lovelace 3', '010.012.1815', 'augusta.king@lovelace.com')
   end
 
   def add_entry(name, phone, email)
@@ -17,6 +15,10 @@ class AddressBook
       index += 1
     end
     @entries.insert(index, Entry.new(name, phone, email))
+  end
+
+  def import_from_csv
+    # do stuff
   end
 
   def remove_entry(name)
