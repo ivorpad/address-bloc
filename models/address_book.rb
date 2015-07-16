@@ -5,9 +5,6 @@ class AddressBook
 
   def initialize
     @entries = []
-    add_entry('Ava Lovelace 1', '010.012.1815', 'augusta.king@lovelace.com')
-    add_entry('Ava Lovelace 2', '010.012.1815', 'augusta.king@lovelace.com')
-    add_entry('Ava Lovelace 3', '010.012.1815', 'augusta.king@lovelace.com')
   end
 
   def add_entry(name, phone, email)
