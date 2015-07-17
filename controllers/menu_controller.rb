@@ -51,6 +51,33 @@ class MenuController
     end
   end
 
+  def entry_submenu(entry)
+    puts 'n - next entry'
+    puts 'd - delete entry'
+    puts 'e - edit this entry'
+    puts 'm - return to main menu'
+
+    selection = $stdin.gets.chomp
+
+    case selection
+    when 'n'
+    when 'd'
+      delete_entry(entry)
+
+    when 'e'
+      entry_edit(entry)
+      entry_submenu(entry)
+
+    when 'm'
+      system 'clear'
+      main_menu
+    else
+      system 'clear'
+      puts "#{selection} is not a valid input"
+      entries_submenu(entry)
+    end
+  end
+
   def view_all_entries
     @address_book.entries.each do |entry|
       system 'clear'
@@ -136,6 +163,18 @@ class MenuController
     puts "#{entry.name} has been deleted"
   end
 
+  def detonate
+    system "clear"
+
+    all_entries = address_book.entries
+    while all_entries.length > 0 
+      all_entries.each do |entry|
+        delete_entry(entry)
+      end      
+    end    
+
+  end
+
   def entry_edit(entry)
     print 'Updated name: '
     name = gets.chomp
@@ -152,33 +191,6 @@ class MenuController
     puts 'Updated entry: '
     puts entry
   end
-
-  def entry_submenu(entry)
-    puts 'n - next entry'
-    puts 'd - delete entry'
-    puts 'e - edit this entry'
-    puts 'm - return to main menu'
-
-    selection = $stdin.gets.chomp
-
-    case selection
-    when 'n'
-    when 'd'
-      delete_entry(entry)
-
-    when 'e'
-      entry_edit(entry)
-      entry_submenu(entry)
-
-    when 'm'
-      system 'clear'
-      main_menu
-    else
-      system 'clear'
-      puts "#{selection} is not a valid input"
-      entries_submenu(entry)
-    end
-   end
 
   def search_submenu(entry)
     puts "\nd - delete entry"
@@ -203,5 +215,5 @@ class MenuController
       puts entry.to_s
       search_submenu(entry)
     end
-   end
+  end
 end
